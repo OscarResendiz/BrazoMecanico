@@ -1,0 +1,10 @@
+; puertos.def : Declares the module parameters for the DLL.
+
+LIBRARY      "puertos"
+DESCRIPTION  'puertos Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+	outport
+	intport
+	caracter

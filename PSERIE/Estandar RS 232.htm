@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0042)http://www.euskalnet.net/shizuka/rs232.htm -->
+<HTML><HEAD><TITLE>Estandar RS 232</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2800.1170" name=GENERATOR>
+<META content=FrontPage.Editor.Document name=ProgId></HEAD>
+<BODY background="Estandar RS 232_archivos/circuit.jpg">
+<P align=center><A href="http://es.cyberclick.net/module/link?hostid=h00000035" 
+target=_blank><IMG height=60 alt="click here!" 
+src="Estandar RS 232_archivos/es.cyberclick.htm" width=468></A> <BR><FONT 
+size=2><A href="http://es.cyberclick.net/module/link?hostid=h00000035" 
+target=_blank><STRONG>Cyber Click!</STRONG></A> </FONT>
+<HR>
+
+<P align=center><STRONG><U><FONT face="Graphite Light ATT" color=#800080 
+size=4>Estándar de comunicaciones RS-232C&nbsp; (O Cómo funciona un puerto 
+serie...)</FONT></U></STRONG></P>
+<HR>
+
+<P align=left><B><SPAN style="BACKGROUND-COLOR: #0000ff"><FONT color=#ffff00 
+size=4>El estándar RS-232C</FONT></SPAN><BR><BR>El puerto serie RS-232C, 
+presente en todos los ordenadores actuales, es la forma mas comúnmente usada 
+para realizar transmisiones de datos entre ordenadores. El RS-232C es un 
+estándar que constituye la tercera revisión de la antigua norma RS-232, 
+propuesta por la EIA (Asociaci¢n de Industrias Electrónicas), realizándose 
+posteriormente un versión internacional por el CCITT, conocida como V.24. Las 
+diferencias entre ambas son mínimas, por lo que a veces se habla indistintamente 
+de V.24 y de RS-232C (incluso sin el sufijo "C"), refiriéndose siempre al mismo 
+estándar.</B></P>
+<P align=left><B>El RS-232C consiste en un conector tipo DB-25 de 25 pines, 
+aunque es normal encontrar la versión de 9 pines DB-9, mas barato e incluso mas 
+extendido para cierto tipo de periféricos (como el ratón serie del PC). En 
+cualquier caso, los PCs no suelen emplear mas de 9 pines en el conector DB-25. 
+Las señales con las que trabaja este puerto serie son digitales, de +12V (0 
+lógico) y&nbsp; -12V (1 lógico), para la entrada y salida de datos, y a la 
+inversa en las señales de control. El estado de reposo en la entrada y salida de 
+datos es -12V. Dependiendo de la velocidad de transmisión empleada, es posible 
+tener cables de hasta 15 metros.<BR><BR>Cada pin puede ser de entrada o de 
+salida, teniendo una función especifica cada uno de ellos. Las mas importantes 
+son:</B></P>
+<DIV align=center>
+<CENTER>
+<TABLE border=0>
+  <TBODY>
+  <TR>
+    <TD align=left bgColor=#0000ff><B><FONT color=#ffff00 
+    size=4>Pin</FONT></B></TD>
+    <TD align=left bgColor=#0000ff><B><FONT color=#ffff00 
+      size=4>Función</FONT></B></TD></TR>
+  <TR>
+    <TD align=left><B>TXD&nbsp;</B></TD>
+    <TD align=left>
+      <P align=left><B>(Transmitir Datos)</B></P></TD></TR>
+  <TR>
+    <TD align=left><B>RXD</B></TD>
+    <TD align=left>
+      <P align=left><B>(Recibir Datos)</B></P></TD></TR>
+  <TR>
+    <TD align=left><B>DTR</B></TD>
+    <TD align=left>
+      <P align=left><B>(Terminal de Datos Listo)</B></P></TD></TR>
+  <TR>
+    <TD align=left><B>DSR</B></TD>
+    <TD align=left>
+      <P align=left><B>(Equipo de Datos Listo)</B></P></TD></TR>
+  <TR>
+    <TD align=left><B>RTS</B></TD>
+    <TD align=left>
+      <P align=left><B>(Solicitud de Envío)</B></P></TD></TR>
+  <TR>
+    <TD align=left><B>CTS</B></TD>
+    <TD align=left><B>(Libre para Envío)</B></TD></TR>
+  <TR>
+    <TD align=left><B>DCD</B></TD>
+    <TD align=left>
+      <P align=left><B>(Detección de 
+Portadora)</B></P></TD></TR></TBODY></TABLE></CENTER></DIV>
+<P align=left><B>Las señales TXD, DTR y RTS son de salida, mientras que RXD, 
+DSR, CTS y DCD son de entrada. La masa de referencia para todas las señales es 
+SG (Tierra de Señal). Finalmente, existen otras señales como RI (Indicador de 
+Llamada), y otras poco comunes que no se explican en este artículo por rebasar 
+el alcance del mismo.</B></P>
+<DIV align=center>
+<CENTER>
+<TABLE borderColor=#ff0000 border=1>
+  <TBODY>
+  <TR>
+    <TD bgColor=#0000ff><B><FONT color=#ffff00 
+    size=4>Numero&nbsp;</FONT></B></TD>
+    <TD bgColor=#0000ff><B><FONT color=#ffff00 size=4>de Pin</FONT></B></TD>
+    <TD bgColor=#0000ff><B><FONT color=#ffff00 size=4>Señal</FONT></B></TD>
+    <TD bgColor=#0000ff><B><FONT color=#ffff00 
+size=4>Descripción</FONT></B></TD>
+    <TD bgColor=#0000ff><B><FONT color=#ffff00 size=4>E/S</FONT></B></TD></TR>
+  <TR>
+    <TD align=middle><B>En DB-25</B></TD>
+    <TD align=middle><B>En DB-9</B></TD>
+    <TD align=middle>&nbsp;</TD>
+    <TD align=middle>&nbsp;</TD>
+    <TD align=middle>&nbsp;</TD></TR>
+  <TR>
+    <TD align=middle><B>1</B></TD>
+    <TD align=middle><B>1</B></TD>
+    <TD align=middle><B>-</B></TD>
+    <TD align=middle><B>Masa chasis</B></TD>
+    <TD align=middle><B>-</B></TD></TR>
+  <TR>
+    <TD align=middle><B>2</B></TD>
+    <TD align=middle><B>3</B></TD>
+    <TD align=middle><B>TxD&nbsp;</B></TD>
+    <TD align=middle><B>Transmit Data</B></TD>
+    <TD align=middle><B>S</B></TD></TR>
+  <TR>
+    <TD align=middle><B>3</B></TD>
+    <TD align=middle><B>2</B></TD>
+    <TD align=middle><B>RxD</B></TD>
+    <TD align=middle><B>Receive Data</B></TD>
+    <TD align=middle><B>E</B></TD></TR>
+  <TR>
+    <TD align=middle><B>4</B></TD>
+    <TD align=middle><B>7</B></TD>
+    <TD align=middle><B>RTS</B></TD>
+    <TD align=middle><B>Request To Send</B></TD>
+    <TD align=middle><B>S</B></TD></TR>
+  <TR>
+    <TD align=middle><B>5</B></TD>
+    <TD align=middle><B>8</B></TD>
+    <TD align=middle><B>CTS</B></TD>
+    <TD align=middle><B>Clear To Send</B></TD>
+    <TD align=middle><B>E</B></TD></TR>
+  <TR>
+    <TD align=middle><B>6</B></TD>
+    <TD align=middle><B>6</B></TD>
+    <TD align=middle><B>DSR</B></TD>
+    <TD align=middle><B>Data Set Ready</B></TD>
+    <TD align=middle><B>E</B></TD></TR>
+  <TR>
+    <TD align=middle><B>7</B></TD>
+    <TD align=middle><B>5</B></TD>
+    <TD align=middle><B>SG</B></TD>
+    <TD align=middle><B>Signal Ground</B></TD>
+    <TD align=middle><B>-</B></TD></TR>
+  <TR>
+    <TD align=middle><B>8</B></TD>
+    <TD align=middle><B>1</B></TD>
+    <TD align=middle><B>CD/DCD</B></TD>
+    <TD align=middle><B>(Data) Carrier Detect</B></TD>
+    <TD align=middle><B>E</B></TD></TR>
+  <TR>
+    <TD align=middle><B>15</B></TD>
+    <TD align=middle><B>-</B></TD>
+    <TD align=middle><B>TxC(*)</B></TD>
+    <TD align=middle><B>Transmit Clock</B></TD>
+    <TD align=middle><B>S</B></TD></TR>
+  <TR>
+    <TD align=middle><B>17</B></TD>
+    <TD align=middle><B>-</B></TD>
+    <TD align=middle><B>RxC(*)</B></TD>
+    <TD align=middle><B>Receive Clock</B></TD>
+    <TD align=middle><B>E</B></TD></TR>
+  <TR>
+    <TD align=middle><B>20</B></TD>
+    <TD align=middle><B>4</B></TD>
+    <TD align=middle><B>DTR</B></TD>
+    <TD align=middle><B>Data Terminal Ready</B></TD>
+    <TD align=middle><B>S</B></TD></TR>
+  <TR>
+    <TD align=middle><B>22</B></TD>
+    <TD align=middle><B>9</B></TD>
+    <TD align=middle><B>RI</B></TD>
+    <TD align=middle><B>Ring Indicator</B></TD>
+    <TD align=middle><B>E</B></TD></TR>
+  <TR>
+    <TD align=middle><B>24</B></TD>
+    <TD align=middle><B>-</B></TD>
+    <TD align=middle><B>RTxC(*)</B></TD>
+    <TD align=middle><B>Transmit/Receive Clock</B></TD>
+    <TD align=middle><B>S</B></TD></TR>
+  <TR>
+    <TD align=middle>&nbsp;</TD>
+    <TD align=middle>&nbsp;</TD>
+    <TD align=middle>&nbsp;</TD>
+    <TD align=middle>&nbsp;</TD>
+    <TD align=middle>&nbsp;</TD></TR></TBODY></TABLE></CENTER></DIV>
+<P align=left><B>(*) = Normalmente no conectados en el DB-25</B></P>
+<DIV align=center>
+<CENTER>
+<TABLE width=287 border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle width=136 bgColor=#0000ff><FONT color=#ffff00 
+      size=4>Conector DB 25</FONT></TD>
+    <TD align=middle width=137 bgColor=#0000ff>
+      <P align=center><FONT color=#ffff00 size=4>Conector DB 
+  9</FONT></P></TD></TR></TBODY></TABLE></CENTER></DIV>
+<DIV align=center>
+<CENTER>
+<TABLE width=180 border=0>
+  <TBODY>
+  <TR>
+    <TD width=135><IMG height=183 src="Estandar RS 232_archivos/DB25.gif" 
+      width=135 border=0></TD>
+    <TD width=138><IMG height=186 src="Estandar RS 232_archivos/DB9.gif" 
+      width=136 border=0></TD></TR></TBODY></TABLE></CENTER></DIV>
+<P align=left><B><SPAN style="BACKGROUND-COLOR: #0000ff"><FONT color=#ffff00 
+size=4>El puerto serie en el PC</FONT></SPAN><BR><BR>El ordenador controla el 
+puerto serie mediante un circuito integrado especifico, llamado UART 
+(Transmisor-Receptor-Asíncrono Universal). Normalmente se utilizan los 
+siguientes modelos de este chip: 8250 (bastante antiguo, con fallos, solo llega 
+a 9600 baudios), 16450 (versión corregida del 8250, llega hasta 115.200 baudios) 
+y 16550A (con buffers de E/S). A partir de la gama Pentium, la circuiteria UART 
+de las placa base son todas de alta velocidad, es decir UART 16550A. De hecho, 
+la mayoría de los módems conectables a puerto serie necesitan dicho tipo de 
+UART, incluso algunos juegos para jugar en red a través del puerto serie 
+necesitan de este tipo de puerto serie. Por eso&nbsp; hay veces que un 486 no se 
+comunica con la suficiente velocidad con un PC Pentium... Los portátiles suelen 
+llevar otros chips: 82510 (con buffer especial, emula al 16450) o el 8251 (no es 
+compatible).</B></P>
+<P align=left><B>Para controlar al puerto serie, la CPU emplea direcciones de 
+puertos de E/S y líneas de interrupción (IRQ). En el AT-286 se eligieron las 
+direcciones 3F8h (o 0x3f8) e IRQ 4 para el COM1, y 2F8h e IRQ 3 para el COM2. El 
+estándar del PC llega hasta aquí, por lo que al añadir posteriormente otros 
+puertos serie, se eligieron las direcciones 3E8 y 2E8 para COM3-COM4, pero las 
+IRQ no están especificadas. Cada usuario debe elegirlas de acuerdo a las que 
+tenga libres o el uso que vaya a hacer de los puertos serie (por ejemplo, no 
+importa compartir una misma IRQ en dos puertos siempre que no se usen 
+conjuntamente, ya que en caso contrario puede haber problemas). Es por ello que 
+últimamente, con el auge de las comunicaciones, los fabricantes de PCs incluyan 
+un puerto especial PS/2 para el ratón, dejando así libre un puerto 
+serie.<BR><BR>Mediante los puertos de E/S se pueden intercambiar datos, mientras 
+que las IRQ producen una interrupción para indicar a la CPU que ha ocurrido un 
+evento (por ejemplo, que ha llegado un dato, o que ha cambiado el estado de 
+algunas señales de entrada). La CPU debe responder a estas interrupciones lo mas 
+rápido posible, para que de tiempo a recoger el dato antes de que el siguiente 
+lo sobrescriba. Sin embargo, las UART 16550A incluyen unos buffers de tipo FIFO, 
+dos de 16 bytes (para recepción y transmisión), donde se pueden guardar varios 
+datos antes de que la CPU los recoja. Esto también disminuye el numero de 
+interrupciones por segundo generadas por el puerto serie.</B></P>
+<P align=left><B>El RS-232 puede transmitir los datos en grupos de 5, 6, 7 u 8 
+bits, a unas velocidades determinadas (normalmente, 9600 bits por segundo o 
+mas). Después de la transmisión de los datos, le sigue un bit opcional de 
+paridad (indica si el numero de bits transmitidos es par o impar, para detectar 
+fallos), y después 1 o 2 bits de Stop. Normalmente, el protocolo utilizado ser 
+8N1 (que significa, 8 bits de datos, sin paridad y con 1 bit de 
+Stop).<BR><BR>Una vez que ha comenzado la transmisión de un dato, los bits 
+tienen que llegar uno detrás de otro a una velocidad constante y en determinados 
+instantes de tiempo. Por eso se dice que el RS-232 es asíncrono por caracter y 
+sincrono por bit. Los pines que portan los datos son RXD y TXD. Las demás se 
+encargan de otros trabajos: DTR indica que el ordenador esta encendido, DSR que 
+el aparato conectado a dicho puerto esta encendido, RTS que el ordenador puede 
+recibir datos (porque no esta ocupado), CTS que el aparato conectado puede 
+recibir datos, y DCD detecta que existe una comunicación, presencia de 
+datos.<BR><BR>Tanto el aparato a conectar como el ordenador (o el programa 
+terminal) tienen que usar el mismo protocolo serie para comunicarse entre si. 
+Puesto que el estándar RS-232 no permite indicar en que modo se esta trabajando, 
+es el usuario quien tiene que decidirlo y configurar ambas partes. Como ya se ha 
+visto, los parámetros que hay que configurar son: protocolo serie (8N1), 
+velocidad del puerto serie, y protocolo de control de flujo. Este ultimo puede 
+ser por hardware (el que ya hemos visto, el handshaking RTS/CTS) o bien por 
+software (XON/XOFF, el cual no es muy recomendable ya que no se pueden realizar 
+transferencias binarias). La velocidad del puerto serie no tiene por que ser la 
+misma que la de transmisión de los datos, de hecho debe ser superior. Por 
+ejemplo, para transmisiones de 1200 baudios es recomendable usar 9600, y para 
+9600 baudios se pueden usar 38400 (o 19200).</B></P>
+<P align=left><B>Este es el diagrama de transmisión de un dato con formato 8N1. 
+El receptor indica al emisor que puede enviarle datos activando la salida RTS. 
+El emisor envía un bit de START (nivel alto) antes de los datos, y un bit de 
+STOP (nivel bajo) al final de estos.</B></P>
+<DIV align=center>
+<CENTER>
+<TABLE border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <P align=center><B>_____________________________________<BR>Emisor ===== 
+      Receptor</B>&nbsp;</P>
+      <P align=center><B>____________________________________<BR>CTS &lt;- | | 
+      &lt;- RTS<BR>TXD -&gt; | | 1 | 0 0 | 1 | 0 | 1 1 | 0 | -&gt; RXD<BR>START 
+      STOP<BR>_____________________________________</B></P></TD></TR></TBODY></TABLE></CENTER></DIV>
+<P align=left><B>Bueno, espero que con esto te quede claro como funciona un 
+puerto serie. He creído necesario exponer esta información ya que tanto para 
+interconectar PCs por el puerto serie como para construir el cable del Nokia 
+5110 al PC es muy útil conocer el tipo de señales que maneja un puerto 
+serie.</B></P>
+<HR>
+
+<P align=center><A 
+href="http://www.euskalnet.net/shizuka/underc.htm"><STRONG>HOME</STRONG></A></P>
+<P align=center><A href="mailto:lost@mypad.com"><IMG height=66 alt=E-mail 
+src="Estandar RS 232_archivos/email3d.gif" width=50 
+border=0></A></P></BODY></HTML>
