@@ -1,0 +1,26 @@
+Oscar te encargo lo siguiente:
+1.- Corrige el autorun, ya que no jala, el proyecto que hicimos
+    para el autorun está en la carpeta de instalación, pon en la carátula:
+
+              Instituto Politécnico Nacional
+    Escuela Superior de Ingeniería Mecánica y Eléctrica
+                    Unidad Zacatenco
+
+                       Proyecto:
+                    Brazo Mecánico.
+
+                   Participantes:
+              Camacho Díaz Jorge Alberto.
+            De la Cruz Oliva Allan Takeshi.
+                Sanchez Villagran Pablo.
+               Resendiz Espinoza Oscar.
+
+                        Fecha:
+                    Junio 13/2003.
+   
+   Nota: pon de fondo la imagen del polimorado. Guarda los cambios hechos en la
+         carpeta de instalación.
+
+   
+2.- Anexa el diagrama electrónico y el diagrama a bloques del pic en la carpeta de
+    interfaz electrónica para que yo después le cree el link.
