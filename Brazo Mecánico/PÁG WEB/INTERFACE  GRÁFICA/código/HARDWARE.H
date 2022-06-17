@@ -1,0 +1,381 @@
+/*
+	Archivo que controla el hardware de brazo de robot
+	aqui se contiene una clase que servira como controlador del brazo
+	es un intermedio entre la interfase grafica y el hardware
+*/
+
+#include<stdio.h>
+#include<bios.h>
+#include<string.h>
+#include<conio.h>
+#include<dos.h>
+#ifndef __HARDWARE_H
+#define __HARDWARE_H
+#define COM1       0
+#define COM2       1
+#define COM3       2
+#define COM4       3
+#define DATA_READY 0x100
+#define TRUE       1
+#define FALSE      0
+#define SETTINGS (0x03| 0xE0)
+class hardware
+{
+	protected:
+		//datos protejidos
+		char TextoError[256];
+		int Fpuerto;  //direccion del puerto que se este usando
+		int dato; //datos que se esten prosesando
+		void trasmite(char c);//transmite un caracter por el puerto
+		void TrasmiteCadena(char *txt);
+		char recive(void);
+		public:
+			hardware(void); //constructor
+			int puerto(int p); //asigna el puerto a usar
+	  /*	int giro(int grados); //hace que el robot gire tantos grados como quieramos
+			int hombro(int grados);//hace que el hombro se mueva los grados que indiquemos
+			int codo(int grados);//hace que el codo se mueva tantos grados como quieramos
+			int pinza(int grados);//hace que la pinza se mueva tantos grados como quieramos
+	  */
+			~hardware();//destructor
+			void error(char *txt);//regresa una cadena con el error que se cometio, en caso de que loa aga
+			/////
+			void motor1(int m);
+			void motor2(int m);
+			void motor3(int m);
+			void motor4(int m);
+			void motor5(int m);
+
+};
+void hardware::motor1(int m)
+{
+	char txt[10];
+	strcpy(txt,"I1N0F");
+	switch(m)
+	{
+		case 0: //apagar
+			txt[2]=0;
+			break;
+		case 1: //girar +
+			txt[2]=2;
+			break;
+		case 2: //girar -
+			txt[2]=1;
+			break;
+		default:
+			txt[2]=0;
+	}
+	TrasmiteCadena(txt);
+}
+void hardware::motor2(int m)
+{
+	char txt[10];
+	strcpy(txt,"I1N0F");
+	switch(m)
+	{
+		case 0: //apagar
+			txt[2]=0;
+			break;
+		case 1: //girar +
+			txt[2]=8;
+			break;
+		case 2: //girar -
+			txt[2]=4;
+			break;
+		default:
+			txt[2]=0;
+	}
+	TrasmiteCadena(txt);
+}
+void hardware::motor3(int m)
+{
+	char txt[10];
+	strcpy(txt,"I1N0F");
+	switch(m)
+	{
+		case 0: //apagar
+			txt[2]=0;
+			break;
+		case 1: //girar +
+			txt[2]=32;
+			break;
+		case 2: //girar -
+			txt[2]=16;
+			break;
+		default:
+			txt[2]=0;
+	}
+	TrasmiteCadena(txt);
+}
+void hardware::motor4(int m)
+{
+	char txt[10];
+	strcpy(txt,"I1N0F");
+	switch(m)
+	{
+		case 0: //apagar
+			txt[2]=0;
+			break;
+		case 1: //girar +
+			txt[2]=128;
+			break;
+		case 2: //girar -
+			txt[2]=64;
+			break;
+		default:
+			txt[2]=0;
+	}
+	TrasmiteCadena(txt);
+}
+void hardware::motor5(int m)
+{
+	char txt[10];
+	strcpy(txt,"I2N0F");
+	switch(m)
+	{
+		case 0: //apagar
+			txt[2]=0;
+			break;
+		case 1: //girar +
+			txt[2]=4;
+			break;
+		case 2: //girar -
+			txt[2]=1;
+			break;
+		default:
+			txt[2]=0;
+	}
+	TrasmiteCadena(txt);
+}
+
+void hardware::TrasmiteCadena(char *txt)
+{
+	int i,n=5;
+	char c,sa;
+	for(i=0;i<n;i++)
+	{
+		trasmite(txt[i]);
+		delay(5);
+		c=recive();
+	}
+
+}
+void hardware::trasmite(char c)
+{
+			bioscom(1,c,Fpuerto);
+}
+char hardware::recive(void)
+{
+	int	status;
+	char out;
+		status = bioscom(3, 0,Fpuerto); //checo el estado del puerto
+		if (status & DATA_READY) //listo para recivir
+		{
+			out = bioscom(2, 0, COM1); //leo el puerto
+			return out;
+		}
+		return 0; //no esta listo
+}
+hardware::hardware(void)
+{
+	TextoError[0]='\0';
+}
+/* esta funcion hace la conexion del puerto especificado
+en caso de que se le pase cero, la funcion lo detecta automaticamente
+y en caso de que no pueda detectar el hardware regresa in valor diferente de cero
+por ejemplo
+	hardware a; //creas un objeto
+	if(a.puerto(0)) //que lo detecte automaticamente
+	{
+		//fallo
+		a.error(txt); //obtengo el error
+		printf("%s",txt); //y lo muestro
+		return;
+	}
+*/
+int hardware::puerto(int p)
+{
+	char c;
+//inicio el puerto
+	if(p==0)//deteccion automatica
+	{
+		for(Fpuerto=0;Fpuerto<2;Fpuerto++)//busco que puerto puedo usar
+		{
+			bioscom(0, SETTINGS,Fpuerto); //configuro el puerto
+			TrasmiteCadena("I000F");
+			c=recive();
+			if(c=='O'||c=='F'||c=='0') //si no ubo error termino
+			{
+				strcpy(TextoError,""); //no ubo error
+				return 0;
+			}
+		}
+		strcpy(TextoError,"NO SE DETECTO EL ROBOT");
+		return 1;
+	}
+	p--;
+	Fpuerto=p;
+	bioscom(0, SETTINGS,Fpuerto); //configuro el puerto
+	TrasmiteCadena("I000F");
+	c=recive();
+	if(c!=0) //si no ubo error termino
+	{
+		strcpy(TextoError,""); //no ubo error
+		return 0;
+	}
+		strcpy(TextoError,"NO SE DETECTO EL ROBOT");
+		return 1;
+}
+/*
+la funcion de giro, hace que el robot gire para la izquierda o la derecha
+tantos grados como le indicamos
+si selepasa un valor positivo gira ala derecha
+si es negativo gira ala izquierda
+
+en caso de que se atore o que surga algun error al momento de girar
+la funcion regresa in codigo de error
+y si el giro se realiso satisfactoriamente regresa 1
+
+para saber cual fue el error, usala funcion de error, la cual indicara el error
+
+un ejemplo de como lo puedes usar seria:
+void main()
+{
+	char txt[256];
+	//ago que gire ala derecha 15 grados
+	if(a.giro(15))
+	{
+		//fallo
+		a.error(txt); //obtengo el error
+		printf("%s",txt); //y lo muestro
+		return;
+	}
+
+}
+*/
+/*
+int hardware::giro(int grados)
+{
+	strcpy(TextoError,"LA CLASE AUN NO ESTA TERMINADA");
+	return 1;
+}
+*/
+/*
+la funcion de hombro, hace que el robot mueva la primera articulaci¢n
+para arriba o para bajo tantos grados como le indicamos
+si selepasa un valor positivo sube
+si es negativo baja
+
+en caso de que se atore o que surga algun error al momento de moverse
+la funcion regresa un codigo de error, si no ay error regresa cero
+y si el giro se realiso satisfactoriamente regresa 1
+
+para saber cual fue el error, usala funcion de error, la cual indicara el error
+
+un ejemplo de como lo puedes usar seria:
+void main()
+{
+	char txt[256];
+	//ago que gire ala derecha 15 grados
+	if(a.hombro(15))
+	{
+		//fallo
+		a.error(txt); //obtengo el error
+		printf("%s",txt); //y lo muestro
+		return;
+	}
+
+}
+*/
+/*
+int hardware::hombro(int grados)
+{
+	strcpy(TextoError,"LA CLASE AUN NO ESTA TERMINADA");
+	return 1;
+}
+*/
+/*
+la funcion de codo, hace que el robot mueva la segunda articulaci¢n
+para arriba o para bajo tantos grados como le indicamos
+si selepasa un valor positivo sube
+si es negativo baja
+
+en caso de que se atore o que surga algun error al momento de moverse
+la funcion regresa un codigo de error, de lo contrario regresa cero
+y si el giro se realiso satisfactoriamente regresa 1
+
+para saber cual fue el error, usala funcion de error, la cual indicara el error
+
+un ejemplo de como lo puedes usar seria:
+void main()
+{
+	char txt[256];
+	//ago que gire ala derecha 15 grados
+	if(!a.codo(15))
+	{
+		//fallo
+		a.error(txt); //obtengo el error
+		printf("%s",txt); //y lo muestro
+		return;
+	}
+
+}
+*/
+/*
+int hardware::codo(int grados)
+{
+	strcpy(TextoError,"LA CLASE AUN NO ESTA TERMINADA");
+	return 1;
+}
+*/
+/*
+la funcion pinza, hace que el robot mueva la pinza
+para abrir o para cerrar tantos grados como le indicamos
+si selepasa un valor positivo abre
+si es negativo cierra
+
+en caso de que se atore o que surga algun error al momento de moverse
+la funcion regresa un codigo de error, si no ay errores regresa cero
+y si el giro se realiso satisfactoriamente regresa 1
+
+para saber cual fue el error, usala funcion de error, la cual indicara el error
+
+un ejemplo de como lo puedes usar seria:
+void main()
+{
+	char txt[256];
+	//ago que gire ala derecha 15 grados
+	if(a.pinza(15))
+	{
+		//fallo
+		a.error(txt); //obtengo el error
+		printf("%s",txt); //y lo muestro
+		return;
+	}
+
+}
+*/
+/*
+int hardware::pinza(int grados)
+{
+	strcpy(TextoError,"LA CLASE AUN NO ESTA TERMINADA");
+	return 1;
+}
+*/
+/*
+	esta funcion nos copia la cadena con la informacion suficiente
+	sobre el error cometido, para que puedas mostrarlo o hacer cualquier cosa
+
+	En caso de que no exista errores, te da una cadena nula
+
+*/
+void hardware::error(char *txt)
+{
+	strcpy(txt,TextoError);
+}
+hardware::~hardware()
+{
+	;
+}
+
+#endif
